@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Scadenze Estintori</title>
+  <meta name="theme-color" content="#c9301c">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Estintori">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-in">
+      <div>
+        <h1 id="titolo">Da fare</h1>
+        <p id="sottotitolo"></p>
+      </div>
+      <button class="icon-btn" id="btn-nuovo-top" data-act="nuovo" aria-label="Nuovo cliente">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+    <div class="hazard"></div>
+  </header>
+
+  <main id="app" aria-live="polite"></main>
+
+  <nav class="tabbar" id="tabbar">
+    <button data-tab="fare"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg><span>Da fare</span></button>
+    <button data-tab="clienti"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.4c1.9.8 3 2.7 3 5.6"/></svg><span>Clienti</span></button>
+    <button data-tab="dati"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg><span>Dati</span></button>
+  </nav>
+
+  <div id="velo" class="velo" hidden></div>
+  <section id="scheda" class="scheda" hidden role="dialog" aria-modal="true"></section>
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="xlsx.full.min.js"></script>
+  <script src="lib.js"></script>
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
