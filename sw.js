@@ -1,7 +1,8 @@
 /* Service worker: dopo la prima apertura l'app funziona anche senza internet.
    Per pubblicare un aggiornamento basta cambiare il numero di VERSIONE. */
-const VERSIONE = 'v1';
-const CACHE = 'scadenze-estintori-' + VERSIONE;
+const VERSIONE = 'v2.0';
+const PREFISSO = 'estintori-v2-';
+const CACHE = PREFISSO + VERSIONE;
 const FILE = ['./', './index.html', './style.css', './lib.js', './db.js', './app.js',
   './xlsx.full.min.js', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
   './icons/maskable-512.png'];
@@ -11,7 +12,7 @@ self.addEventListener('install', e => {
 });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys()
-    .then(chiavi => Promise.all(chiavi.filter(k => k !== CACHE).map(k => caches.delete(k))))
+    .then(chiavi => Promise.all(chiavi.filter(k => k.startsWith(PREFISSO) && k !== CACHE).map(k => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', e => {
